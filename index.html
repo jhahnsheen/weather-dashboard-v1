@@ -8,17 +8,61 @@
     <title>Weather Dashboard</title>
     <!-- link tailwind cdn -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome cdn -->
+    <script src="https://kit.fontawesome.com/143986e3b2.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class='bg-[#FFFFFF]'>
     <!-- simple header -->
     <header>
-        <div class='flex justify-center bg-gradient-to-r from-blue-500 to-indigo-900'>
-            <h1 class='my-2 text-2xl font-semibold text-[#FFFFFF]'>Weather Dashboard</h1>
+        <div class='flex justify-center bg-[#FFFFFF] drop-shadow'>
+            <i class="far fa-snowflake text-[#2A7EFF] mt-1"></i>
+            <h1 class='my-2 text-2xl font-semibold text-[#253758]'>Weather Dashboard</h1>
         </div>
     </header>
+    
+    <!-- nav sidebar -->
+    <nav class='bg-[#FAFBFC]'>
+        <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+        <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
+            <!-- search input -->
+            <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+                <p class="text-md font-bold tracking-widest text-[#253758] uppercase rounded-lg dark-mode:text-white">Search for a City</p>                
+            </div>
+            <div class='pl-7 mb-6'>
+                <input class="bg-[#F1F3F5] h-10 pl-5 pr-5 rounded-full text-sm focus:outline-none" type="search" name="search" placeholder="San Diego">
+                <button type="submit" class="absolute left-48 top-26 mt-2 mr-4 text-md text-[#90959F]">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="flex justify-center">
+                <div class="divide-y divide-solid w-5/6">
+                    <div></div>
+                    <div></div>
+                </div>                
+            </div>
+            <!-- major cities header -->
+            <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between pt-8">
+                <p class="text-md font-bold tracking-widest text-[#253758] uppercase rounded-lg dark-mode:text-white">Major Cities</p> 
+            </div>
+            <!-- major cities selector -->
+            <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Austin</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Chicago</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">New York</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Orlando</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">San Francisco</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Seattle</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Denver</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-medium text-[#253758] bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Atlanta</a>
+            </nav>
+        </div>
+        </div>
+    </nav>
 
     <!-- link js page -->
     <script src="./assets/js/script.js"></script>
+    <!-- link alpinejs -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </body>
 </html>
